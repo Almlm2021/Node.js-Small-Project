@@ -1,0 +1,36 @@
+{
+  "name": "taskusa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watchAll",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "cheerio": "^1.1.2",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.1.3",
+    "readme-md-generator": "^1.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {},
+    "globals": {
+      "ts-jest": {
+        "useESM": true
+      }
+    },
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    }
+  }
+}

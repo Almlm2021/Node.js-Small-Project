@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hacker News Top 30</title>
+</head>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background: #fafafa;
+    }
+</style>
+<body>
+<h1>Hacker News Top 30 </h1>
+<button id="all">All</button>
+<button id="long">Filter>5 words , ordered by the number of comments first</button>
+<button id="short">Filter<=5 words , ordered by points</button>
+<h2>Results:</h2>
+<table id="tbl">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Points</th>
+        <th>Comments</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script>
+    const tbody= document.querySelector('#tbl tbody');
+    const all=document.querySelector('#all');
+    const long= document.querySelector('#long');
+    const short = document.querySelector('#short');
+    async function loadData(endpoint) {
+       try{
+           const response = await fetch(endpoint);
+           const data = await response.json();
+           tbody.innerHTML = '';//
+
+           data.forEach((element, index) => {
+               const tr = document.createElement('tr');
+               const rankCell = document.createElement('td');
+               rankCell.textContent = element.rank;
+               const titleCell= document.createElement('td');
+               titleCell.textContent = element.title;
+               const pointCell= document.createElement('td');
+               pointCell.textContent = element.points;
+               const commentsCell= document.createElement('td');
+               commentsCell.textContent = element.comments;
+               tr.appendChild(rankCell);
+               tr.appendChild(titleCell);
+               tr.appendChild(pointCell);
+               tr.appendChild(commentsCell);
+               tbody.appendChild(tr);
+
+           });
+       }catch(error){
+           tbody.innerHTML = '<tr><td colspan="4">Error loading data</td></tr>';
+
+       }
+    }
+    all.addEventListener('click', () => {
+        loadData('/api/all')});
+
+    long.addEventListener('click', () => {
+        loadData('/api/filter/long_title')});
+
+    short.addEventListener('click', () => {
+        loadData('/api/filter/short_title')});
+
+    loadData('/api/all');
+    </script>
+</body>
+</html>
