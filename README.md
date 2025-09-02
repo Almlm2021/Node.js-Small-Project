@@ -140,7 +140,7 @@ This project is licensed under the ISC License.
 
 * Website: https://github.com/Almlm2021
 * Github: [@Almlm2021](https://github.com/Almlm2021)
-* LinkedIn: [@Alma Allaimouni](https://linkedin.com/in/Alma Allaimouni)
+* LinkedIn: [@Alma Allaimouni](https://www.linkedin.com/in/alma-allaimouni/)
 
 ## Show your support
 
